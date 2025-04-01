@@ -30,7 +30,7 @@ class Prediction(BaseModel):
     executionTime: int
 
     def wait(self) -> "Prediction":
-        while self.status not in ['completed', 'error']:
+        while self.status not in ['completed', 'failed']:
             time.sleep(self._client.poll_interval)
             print('Waiting for prediction to complete: ', self.urls.get, type(self.urls.get))
             response = self._client.client.get(self.urls.get)
@@ -40,7 +40,7 @@ class Prediction(BaseModel):
         return self
     
     async def async_wait(self) -> "Prediction":
-        while self.status not in ['completed', 'error']:
+        while self.status not in ['completed', 'failed']:
             await asyncio.sleep(self._client.poll_interval)
             response = await self._client.async_client.get(self.urls.get)
             response.raise_for_status()

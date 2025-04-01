@@ -203,7 +203,7 @@ The `Prediction` object contains information about an image generation job:
 ```python
 prediction.id           # Unique ID of the prediction
 prediction.model        # Model ID used for the prediction
-prediction.status       # Status of the prediction (processing, completed, error)
+prediction.status       # Status of the prediction (processing, completed, failed)
 prediction.outputs      # List of output image URLs
 prediction.input        # Input parameters used for the prediction
 prediction.created_at   # Creation timestamp

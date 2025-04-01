@@ -42,7 +42,7 @@ def create_and_poll_image(client: Wavespeed, args):
         # Manually poll for status
         if args.poll:
             print("\nPolling for status updates...")
-            while prediction.status not in ['completed', 'error']:
+            while prediction.status not in ['completed', 'failed']:
                 time.sleep(client.poll_interval)
                 print(f"Current status: {prediction.status}, polling again in {client.poll_interval} seconds...")
                 prediction.reload()
