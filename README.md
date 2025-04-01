@@ -1,6 +1,6 @@
-# Wavespeed Python Client
+# WaveSpeed Python Client
 
-A Python client for interacting with the Wavespeed AI API.
+A Python client for interacting with the WaveSpeed AI API.
 
 ## Installation
 
@@ -13,10 +13,10 @@ pip install wavespeed
 ### Synchronous Image Generation
 
 ```python
-from wavespeed import Wavespeed
+from wavespeed import WaveSpeed
 
 # Initialize the client with your API key (or set WAVESPEED_API_KEY environment variable)
-client = Wavespeed(api_key="YOUR_API_KEY")
+client = WaveSpeed(api_key="YOUR_API_KEY")
 
 # Generate an image and wait for the result
 prediction = client.run(
@@ -41,11 +41,11 @@ for i, img_url in enumerate(prediction.outputs):
 
 ```python
 import asyncio
-from wavespeed import Wavespeed
+from wavespeed import WaveSpeed
 
 async def generate_image():
     # Initialize the client with your API key (or set WAVESPEED_API_KEY environment variable)
-    client = Wavespeed(api_key="YOUR_API_KEY")
+    client = WaveSpeed(api_key="YOUR_API_KEY")
     
     try:
         # Generate an image and wait for the result
@@ -78,10 +78,10 @@ asyncio.run(generate_image())
 You can also create a prediction without waiting for it to complete:
 
 ```python
-from wavespeed import Wavespeed
+from wavespeed import WaveSpeed
 
 # Initialize the client with your API key (or set WAVESPEED_API_KEY environment variable)
-client = Wavespeed(api_key="YOUR_API_KEY")
+client = WaveSpeed(api_key="YOUR_API_KEY")
 
 # Create a prediction without waiting
 prediction = client.create(
@@ -152,15 +152,15 @@ python examples/create_generate_image.py --prompt "A futuristic cityscape with f
 
 ## API Reference
 
-### Wavespeed Client
+### WaveSpeed Client
 
 ```python
-Wavespeed(api_key)
+WaveSpeed(api_key)
 ```
 
 #### Parameters:
 
-- `api_key` (str): Your Wavespeed API key
+- `api_key` (str): Your WaveSpeed API key
 
 ### Methods
 
@@ -204,8 +204,10 @@ The `Prediction` object contains information about an image generation job:
 prediction.id           # Unique ID of the prediction
 prediction.model        # Model ID used for the prediction
 prediction.status       # Status of the prediction (processing, completed, failed)
-prediction.outputs      # List of output image URLs
 prediction.input        # Input parameters used for the prediction
+prediction.outputs      # List of output image URLs
+prediction.urls.get    # URL to get the prediction status
+prediction.has_nsfw_contents # List of booleans indicating if each image has NSFW content
 prediction.created_at   # Creation timestamp
 prediction.error        # Error message (if any)
 prediction.executionTime # Time taken to execute the prediction in milliseconds
@@ -224,7 +226,7 @@ await prediction.async_reload() -> Prediction
 
 ## Environment Variables
 
-- `WAVESPEED_API_KEY`: Your Wavespeed API key
+- `WAVESPEED_API_KEY`: Your WaveSpeed API key
 - `WAVESPEED_POLL_INTERVAL`: Interval in seconds for polling prediction status (default: 1)
 - `WAVESPEED_TIMEOUT`: Timeout in seconds for API requests (default: 60)
 

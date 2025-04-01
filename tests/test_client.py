@@ -5,23 +5,22 @@ Tests for the Wavespeed client.
 import pytest
 import respx
 from httpx import Response
-import asyncio
 from datetime import datetime
 
-from wavespeed.client import Wavespeed
+from wavespeed.client import WaveSpeed
 from wavespeed.schemas.prediction import Prediction, PredictionUrls
 
 
 @pytest.fixture
 def client():
     """Create a test client with a dummy API key."""
-    return Wavespeed(api_key="test_api_key")
+    return WaveSpeed(api_key="test_api_key")
 
 
 @pytest.fixture
 async def async_client():
     """Create a test client with a dummy API key and clean up after test."""
-    client = Wavespeed(api_key="test_api_key")
+    client = WaveSpeed(api_key="test_api_key")
     yield client
     await client.close()
 

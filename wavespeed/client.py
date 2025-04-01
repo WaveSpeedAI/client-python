@@ -6,7 +6,7 @@ from urllib.parse import urljoin
 from wavespeed.schemas.prediction import Prediction
 
 
-class Wavespeed:
+class WaveSpeed:
     """
     A client for interacting with the Wavespeed AI API.
     """
@@ -147,4 +147,4 @@ class Wavespeed:
         
     def __str__(self) -> str:
         """String representation of the client."""
-        return f"WavespeedClient()"
+        return f"WaveSpeed()"

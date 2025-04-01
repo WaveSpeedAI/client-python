@@ -14,10 +14,10 @@ from pathlib import Path
 # Add the parent directory to the path so we can import the wavespeed package
 sys.path.append(str(Path(__file__).parent.parent))
 
-from wavespeed import Wavespeed
+from wavespeed import WaveSpeed
 
 
-def create_and_poll_image(client: Wavespeed, args):
+def create_and_poll_image(client: WaveSpeed, args):
     try:
         print(f"Creating image generation job with prompt: '{args.prompt}'...")
         # Use the create method to start the job without waiting
@@ -92,7 +92,7 @@ def main():
         print("Error: API key is required. Provide it with --api-key or set WAVESPEED_API_KEY environment variable.")
         sys.exit(1)
     
-    client = Wavespeed(api_key=args.api_key)
+    client = WaveSpeed(api_key=args.api_key)
     
     # Create the job and optionally poll for status
     create_and_poll_image(client, args)

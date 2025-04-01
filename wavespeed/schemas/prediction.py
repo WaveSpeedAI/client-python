@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 import pydantic
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from wavespeed.client import Wavespeed
+    from wavespeed.client import WaveSpeed
 
 class PredictionUrls(BaseModel):
     """URLs associated with a prediction."""
@@ -16,7 +16,7 @@ class PredictionUrls(BaseModel):
 
 class Prediction(BaseModel):
     """Response from a prediction API call."""
-    _client: "Wavespeed" = pydantic.PrivateAttr()
+    _client: "WaveSpeed" = pydantic.PrivateAttr()
 
     id: str
     model: str

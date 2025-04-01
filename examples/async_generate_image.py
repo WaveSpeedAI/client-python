@@ -13,10 +13,10 @@ from pathlib import Path
 # Add the parent directory to the path so we can import the wavespeed package
 sys.path.append(str(Path(__file__).parent.parent))
 
-from wavespeed import Wavespeed
+from wavespeed import WaveSpeed
 
 
-async def generate_image(client: Wavespeed, args):
+async def generate_image(client: WaveSpeed, args):
     try:
         print(f"Generating image with prompt: '{args.prompt}'...")
         # Use the async_run method for asynchronous image generation
@@ -79,7 +79,7 @@ async def main_async():
         print("Error: API key is required. Provide it with --api-key or set WAVESPEED_API_KEY environment variable.")
         sys.exit(1)
     
-    client = Wavespeed(api_key=args.api_key)
+    client = WaveSpeed(api_key=args.api_key)
     
     # Run the async function
     await generate_image(client, args)
