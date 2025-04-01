@@ -14,7 +14,7 @@ from pathlib import Path
 # Add the parent directory to the path so we can import the wavespeed package
 sys.path.append(str(Path(__file__).parent.parent))
 
-from wavespeed.client import Wavespeed
+from wavespeed import Wavespeed
 
 
 async def create_and_poll_image(client: Wavespeed, args):

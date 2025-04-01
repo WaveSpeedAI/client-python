@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "wavespeed"
-version = "0.0.1"
+version = "0.0.2"
 description = "Python client for Wavespeed"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -37,7 +37,7 @@ asyncio_mode = "auto"
 testpaths = "tests/"
 
 [tool.setuptools]
-packages = ["wavespeed"]
+packages = ["wavespeed", "wavespeed.schemas"]
 
 [tool.setuptools.package-data]
 "wavespeed" = ["py.typed"]
